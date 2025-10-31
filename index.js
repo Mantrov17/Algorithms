@@ -954,4 +954,182 @@ const hasTwoNearElementsEqual = (array) => {
   return "No";
 };
 
-console.log(hasTwoNearElementsEqual([1, 2, 3, 3, 4, 5]));
+//Дано некоторое число. Проверьте, что цифры этого числа расположены по возрастанию.
+
+const areDigitsGettingHigher = (number) => {
+  for (let i = 0; i < number.toString().length; i++) {
+    if (number.toString()[i] > number.toString()[i + 1]) {
+      return "No";
+    }
+  }
+  return "Yes";
+};
+
+//Дан массив:
+//
+// [1, '', 2, 3, '', 5]
+// Удалите из массива все пустые строки.
+
+const removeSpaces = (array) => {
+  return array.filter((value) => value != "");
+};
+
+//Дан массив:
+//
+// [
+// 	[2, 1, 4, 3, 5],
+// 	[3, 5, 2, 4, 1],
+// 	[4, 3, 1, 5, 2],
+// ]
+// Отсортируйте элементы в каждом подмассиве.
+
+const sortArrays = (array) => {
+  let resultArray = [];
+  for (let i = 0; i < array.length; i++) {
+    resultArray.push(array[i].sort());
+  }
+  return resultArray;
+};
+
+//Даны два массива:
+//
+// let arr1 = [1, 2, 3];
+// let arr2 = [1, 2, 3, 4, 5];
+// Удалите из большего массива лишние элементы с конца так, чтобы длины массивов стали одинаковыми.
+
+let arr1 = [1, 2, 3];
+let arr2 = [1, 2, 3, 4, 5];
+
+const removeExcessNumbers = (arr1, arr2) => {
+  if (arr1.length > arr2.length) {
+    return arr1.slice(0, arr2.length);
+  }
+  if (arr2.length > arr1.length) {
+    return arr2.slice(0, arr1.length);
+  } else return "Same length";
+};
+
+//Выведите в консоль все числа в промежутке от 10 до 1000, у которых предпоследняя цифра четная.
+
+const logLastDigitIsEven = () => {
+  for (let i = 10; i <= 1000; i++) {
+    if (i.toString()[i.toString().length - 1] % 2 === 0) {
+      console.log(i);
+    }
+  }
+};
+
+//Дан массив. Удалите из него каждый пятый элемент.
+
+const removeEveryFifthElement = (array) => {
+  return array.filter((value, index) => (index + 1) % 5 !== 0);
+};
+
+//Дана некоторая переменная с числом:
+//
+// let num = 5;
+// Сделайте строку, содержащую столько нулей, сколько указано в переменной. В нашем случае получится такая строка:
+//
+// '00000'
+
+const repeatZeros = (num) => {
+  return "0".repeat(num);
+};
+
+//Дана некоторая строка со словами:
+//
+// 'aaa bbb ccc eee fff'
+// Удалите из этой строки каждое второе слово. В нашем случае должно получится следующее:
+//
+// 'aaa ccc fff'
+
+const deleteEverySecondWord = (string) => {
+  let array = string.split(" ");
+  return array.filter((value, index) => index % 2 === 0).join(" ");
+};
+
+//Дан массив:
+//
+// [
+// 	[1, 2, 3],
+// 	[4, 5, 6],
+// 	[7, 8, 9],
+// ]
+// Найдите сумму элементов этого массива.
+
+const sumOfElements = (array) => {
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    let sumOfSmallArray = array[i].reduce((accumulator, currentValue) => {
+      return accumulator + currentValue;
+    });
+    sum += sumOfSmallArray;
+  }
+  return sum;
+};
+
+//Дан массив со словами. Удалите из него слова, состоящие более чем из трех символов.
+
+const deleteWordsWithMoreThanThreeSymbols = (array) => {
+  return array.filter((value) => value.toString().length <= 3);
+};
+
+//Дано некоторое число:
+//
+// 1357
+// Проверьте, что все цифры этого числа являются нечетными.
+
+const checkAllDigitsAreNotEven = (number) => {
+  for (let i = 0; i < number.toString().length; i++) {
+    if (number.toString()[i] % 2 === 0) {
+      return false;
+    }
+  }
+  return true;
+};
+
+//Дано некоторое слово:
+//
+// 'abcba'
+// Проверьте, что это слово читается одинаково с любой стороны.
+
+const checkSameSpellingFromBothSides = (string) => {
+  return string.split("").reverse().join("") === string;
+};
+
+//Дан массив:
+//
+// [
+// 	[
+// 		[11, 12, 13],
+// 		[14, 15, 16],
+// 		[17, 17, 19],
+// 	],
+// 	[
+// 		[21, 22, 23],
+// 		[24, 25, 26],
+// 		[27, 27, 29],
+// 	],
+// 	[
+// 		[31, 32, 33],
+// 		[34, 35, 36],
+// 		[37, 37, 39],
+// 	],
+// ]
+// Найдите сумму элементов этого массива.
+
+const sumOfArrays = (array) => {
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array[i].length; j++) {
+      for (let k = 0; k < array[i][j].length; k++) {
+        sum += array[i][j][k];
+      }
+    }
+  }
+  return sum;
+};
+
+const sumOfArrays1 = (array) => {
+  return array.flat(2).reduce((acc, curr) => acc + curr, 0);
+};
